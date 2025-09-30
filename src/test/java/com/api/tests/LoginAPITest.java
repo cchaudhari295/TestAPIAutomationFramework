@@ -17,12 +17,12 @@ import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 
-public class LoginApiTest {
+public class LoginAPITest {
 
 	UserCredentials userCredentials = new UserCredentials("iamfd", "password");
 
 	@Test
-	public void loginAPITest() throws IOException {
+	public void loginAPITest() {
 		
 	Response res=	given()
 		 	.baseUri(readProperty("BASE_URI"))
