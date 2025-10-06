@@ -7,6 +7,10 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
+import com.api.utils.SpecUtil;
+
+import groovyjarjarpicocli.CommandLine.Spec;
+
 import static com.api.utils.AuthTokenProvider.*;
 import static com.api.utils.ConfigManager.*;
 
@@ -21,18 +25,12 @@ public class MasterAPITest {
 	public void verifyMasterAPITest(){
 		
 					given()
-						.baseUri(readProperty("BASE_URI"))
-						.header("Authorization",getToken(Role.FD))
-						.contentType("")
-						.log().uri()
-						.log().headers()
-						.log().body()
+						.spec(SpecUtil.requestSpecWithAuth(Role.FD))						
 					.when()
 						.post("master")
 						
 					.then()
-						.statusCode(200)
-						.time(lessThan(1000L))
+						.spec(SpecUtil.responseSpec_OK())
 						.body("message", equalTo("Success"))
 						.body("data", notNullValue())
 						.body("data", hasKey("mst_oem"))
@@ -51,16 +49,10 @@ public class MasterAPITest {
 	@Test
 	public void invalidTokenMasterAPITest() {
 		given()
-		.baseUri(readProperty("BASE_URI"))
-		.header("Authorization","")
-		.contentType("")
-		.log().uri()
-		.log().headers()
-		.log().body()
+		.spec(SpecUtil.requestSpec())		
 	.when()
 		.post("master")
 	.then()
-		.statusCode(401)
-		.log().all();
+		.spec(SpecUtil.responseSpec_TEXT(401));
 	}
 }

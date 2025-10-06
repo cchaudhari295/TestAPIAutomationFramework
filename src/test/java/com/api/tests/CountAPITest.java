@@ -4,6 +4,8 @@ import static org.hamcrest.Matchers.*;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
+import com.api.utils.SpecUtil;
+
 import static com.api.utils.ConfigManager.*;
 
 import static com.api.utils.AuthTokenProvider.*;
@@ -22,25 +24,19 @@ public class CountAPITest {
 	public void verifyCountAPIResponse() {
 				
 					given()
-						.baseUri(readProperty("BASE_URI"))
-						.header("Authorization",getToken(Role.FD))
-						.log().uri()
-						.log().method()
-						.log().headers()
+						.spec(SpecUtil.requestSpecWithAuth(Role.FD))		
 					.when()
 						.get("dashboard/count")
 					.then()
-						.log().ifValidationFails()
-						.statusCode(200)
-						.time(lessThan(1000L))
+						.spec(SpecUtil.responseSpec_OK())
 						.body("message", equalTo("Success"))
 						.body("data", notNullValue())
 						.body("data.size()",equalTo(3))
 						.body("data.count", everyItem(greaterThanOrEqualTo(0)))
 						.body("data.label", not(blankOrNullString()))
 						.body("data.key", containsInAnyOrder("pending_for_delivery","created_today","pending_fst_assignment"))
-						.body(matchesJsonSchemaInClasspath("response-schema/CountResponseSchema.json"))
-						.extract().response();
+						.body(matchesJsonSchemaInClasspath("response-schema/CountResponseSchema.json"));
+			
 			
 	}
 	
@@ -56,7 +52,6 @@ public class CountAPITest {
 		.when()
 			.get("dashboard/count")
 		.then()
-			.log().all()
-			.statusCode(401);
+			.spec(SpecUtil.responseSpec_TEXT(401));
 	}
 }
