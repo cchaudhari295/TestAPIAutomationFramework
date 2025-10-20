@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 public class UserDetailsAPITest {
-
-	
 	
 	@Test(description="Verify if the user details api response is shown correctly",groups= {"api","smoke","regression"})
 	public void userDetailsAPITest() {

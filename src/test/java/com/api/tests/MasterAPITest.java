@@ -14,8 +14,6 @@ import com.api.constant.Role;
 import com.api.utils.SpecUtil;
 
 public class MasterAPITest {
-
-	
 	
 	@Test(description="Verify if the master api is giving correct response",groups= {"api","smoke","regression"})
 

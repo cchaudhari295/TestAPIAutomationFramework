@@ -61,6 +61,4 @@ public void createJobAPI() {
 			 .body("job_number",startsWith("JOB_"));
 }
 	
-
-	
 }
