@@ -37,9 +37,6 @@ public class LoginAPITest {
 		 	.extract().response();
 		 	
 		System.out.println(res.asPrettyString());
-		
-		
+	
 	}
-	
-	
 }
