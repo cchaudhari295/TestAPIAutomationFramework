@@ -25,7 +25,4 @@ public class UserCredentials {
 	public String toString() {
 		return "LoginRequest [username=" + username + ", password=" + password + "]";
 	}
-	
-	
-	
 }
