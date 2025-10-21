@@ -36,7 +36,6 @@ public class LoginAPITest {
 		 	.body(matchesJsonSchemaInClasspath("response-schema/LoginResponseSchema.json"))
 		 	.extract().response();
 		 	
-		System.out.println(res.asPrettyString());
-	
+		System.out.println(res.asPrettyString());	
 	}
 }
