@@ -1,6 +1,6 @@
 package com.api.tests;
 
-import static com.api.utils.ConfigManager.readProperty;
+import static com.api.utils.ConfigManager.getProperty;
 import static com.api.utils.SpecUtil.requestSpecWithAuth;
 import static com.api.utils.SpecUtil.responseSpec_OK;
 import static com.api.utils.SpecUtil.responseSpec_TEXT;
@@ -46,7 +46,7 @@ public class CountAPITest {
 	public void countAPITest_MissingAuthToken() {
 
 		given()
-			.baseUri(readProperty("BASE_URI"))
+			.baseUri(getProperty("BASE_URI"))
 			.log().uri()
 			.log().method()
 			.log().headers()
