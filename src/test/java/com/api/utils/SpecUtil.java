@@ -19,7 +19,7 @@ public class SpecUtil {
 	public static RequestSpecification requestSpec() {
 		//To take care of common request sections
 		RequestSpecification requestSpecification= new RequestSpecBuilder()
-		 .setBaseUri(ConfigManager.readProperty("BASE_URI"))
+		 .setBaseUri(ConfigManager.getProperty("BASE_URI"))
 		 .setContentType(ContentType.JSON)
 		 .setAccept(ContentType.JSON)
 		 .log(LogDetail.URI)
@@ -35,7 +35,7 @@ public class SpecUtil {
 	public static RequestSpecification requestSpec(Object payload) {
 		//To take care of common request sections
 		RequestSpecification requestSpecification= new RequestSpecBuilder()
-		 .setBaseUri(ConfigManager.readProperty("BASE_URI"))
+		 .setBaseUri(ConfigManager.getProperty("BASE_URI"))
 		 .setContentType(ContentType.JSON)
 		 .setAccept(ContentType.JSON)
 		 .setBody(payload)
@@ -51,7 +51,7 @@ public class SpecUtil {
 	public static RequestSpecification requestSpecWithAuth(Role role) {
 		//To take care of common request sections
 		RequestSpecification requestSpecification= new RequestSpecBuilder()
-		 .setBaseUri(ConfigManager.readProperty("BASE_URI"))
+		 .setBaseUri(ConfigManager.getProperty("BASE_URI"))
 		 .setContentType(ContentType.JSON)
 		 .setAccept(ContentType.JSON)
 		 .addHeader("Authorization", AuthTokenProvider.getToken(role))
@@ -67,7 +67,7 @@ public class SpecUtil {
 	public static RequestSpecification requestSpecWithAuth(Role role, Object payload) {
 		//To take care of common request sections
 		RequestSpecification requestSpecification= new RequestSpecBuilder()
-		 .setBaseUri(ConfigManager.readProperty("BASE_URI"))
+		 .setBaseUri(ConfigManager.getProperty("BASE_URI"))
 		 .setContentType(ContentType.JSON)
 		 .setAccept(ContentType.JSON)
 		 .addHeader("Authorization", AuthTokenProvider.getToken(role))
