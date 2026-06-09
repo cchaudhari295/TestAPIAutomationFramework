@@ -26,6 +26,9 @@ public class FakerDataGenerator {
 	private final static int MODEL_ID=1;
 	private final static String COUNTRY="India";
 
+	
+	private final static int validProblemsId[]= {1,2,3,4,5,67,8,9,10,11,12,15,16,17,20,22,24,26,27,28,29};
+	
 	private FakerDataGenerator() {
 		
 	}
@@ -56,10 +59,10 @@ public class FakerDataGenerator {
 	private static List<Problems> generateFakeProblemsList() {
 	String fakeRemark=faker.lorem().sentence(5); //creates fake sentence of 5 words
 		
-		//Generate random number between 1 -27
-		int problemId=RANDOM.nextInt(27)+1;//27 is exclusive. random number from 0-26
+		//Generate random number between 1 - 22
+		int randomIndex=RANDOM.nextInt(validProblemsId.length);//23 is exclusive. random number from 0-22
 		
-		Problems problems=new Problems(problemId,fakeRemark);
+		Problems problems=new Problems(validProblemsId[randomIndex],fakeRemark);
 		List<Problems> problemsArray = new ArrayList<Problems>();
 		problemsArray.add(problems);
 		
