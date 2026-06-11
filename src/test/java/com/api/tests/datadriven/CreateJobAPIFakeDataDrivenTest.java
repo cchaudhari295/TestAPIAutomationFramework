@@ -1,4 +1,4 @@
-package com.api.tests;
+package com.api.tests.datadriven;
 
 import static org.hamcrest.Matchers.*;
 
@@ -37,7 +37,7 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 public class CreateJobAPIFakeDataDrivenTest{
 
 	
-@Test(description="Verify if the create job api is able to create inwarranty job",groups= {"api","smoke","regression"},dataProviderClass=com.dataproviders.DataProviderUtils.class,dataProvider="CreateJobAPIFakerDataProvider")
+@Test(description="Verify if the create job api is able to create inwarranty job",groups= {"api","regression","datadriven","faker"},dataProviderClass=com.dataproviders.DataProviderUtils.class,dataProvider="CreateJobAPIFakerDataProvider")
 
 public void createJobAPI(CreateJobPayload createJobPayload) {
 
