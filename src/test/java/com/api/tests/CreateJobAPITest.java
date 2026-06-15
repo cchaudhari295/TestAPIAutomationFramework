@@ -24,10 +24,18 @@ import com.api.request.model.Problems;
 import static com.api.utils.DateTimeUtil.*;
 import static com.api.utils.SpecUtil.*;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.RestAssured;
 import io.restassured.module.jsv.JsonSchemaValidator;
 
 
+@Epic("Job Management")
+@Feature("Job Creation")
 public class CreateJobAPITest {
 	private CreateJobPayload createJobPayload;
 	
@@ -44,7 +52,9 @@ public class CreateJobAPITest {
 		createJobPayload=new CreateJobPayload(ServiceLocation.SERVICE_LOCATION_A.getCode(), Platform.FRONT_DESK.getCode(), Warranty_Status.IN_WARRANTY.getCode(), OEM.APPLE.getCode(), customer, customerAddress, customerProduct, problemsArray);
 	}
 	
-	
+	@Story("FD should be able to create a job")
+	@Description("Verify if FD is able to use create job api and Inwarranty job is created ")
+	@Severity(SeverityLevel.BLOCKER)	
 @Test(description="Verify if the create job api is able to create inwarranty job",groups= {"api","smoke","regression"})
 
 public void createJobAPI() {
