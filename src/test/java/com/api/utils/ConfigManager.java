@@ -40,7 +40,7 @@ public class ConfigManager {
 		}
 	}
 
-	public static String readProperty(String key) {
+	public static String getProperty(String key) {
 		return prop.getProperty(key);
 	}
 

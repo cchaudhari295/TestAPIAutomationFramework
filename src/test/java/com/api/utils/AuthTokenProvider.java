@@ -37,7 +37,7 @@ public class AuthTokenProvider {
 		}
 				
 				String token=given()
-						.baseUri(ConfigManager.readProperty("BASE_URI"))
+						.baseUri(ConfigManager.getProperty("BASE_URI"))
 						.contentType(ContentType.JSON)
 						.body(userCredentials)
 					.when()
