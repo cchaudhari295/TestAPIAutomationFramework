@@ -4,18 +4,17 @@ import java.util.Iterator;
 
 import org.testng.annotations.DataProvider;
 
-import com.api.request.model.CreateJobPayload;
-import com.api.utils.FakerDataGenerator;
+import com.api.utils.CSVReaderUtil;
+import com.dataproviders.api.bean.UserBean;
 
 public class DataProviderUtils {
 
 	
-	
-	@DataProvider(name="CreateJobAPIFakerDataProvider",parallel=true)
-	public static Iterator<CreateJobPayload> createJobFakeDataProvider(){
-		String fakerCount=System.getProperty("fakeCount", "5");
-		int fakerCountInt=Integer.parseInt(fakerCount);
-		Iterator<CreateJobPayload> payloadIterator= FakerDataGenerator.generateFakeCreateJobPayload(fakerCountInt);	
-		return payloadIterator;
+	@DataProvider(name="LoginAPIDataProvider",parallel=true)
+	public static Iterator<UserBean> loginAPIDataProvider() {
+		return CSVReaderUtil.loadCSV("testData/LoginCreds.csv");
 	}
+	
+	
+	
 }
