@@ -18,8 +18,20 @@ import org.testng.annotations.Test;
 
 import com.api.constant.Role;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
+@Epic("Job Management")
+@Feature("Job Count")
 public class CountAPITest {
 	
+	@Story("Job Count data is shown correctly")
+	@Description("Verify if count api is giving correct response")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(description="Verify if the count api is giving correct response",groups= {"api","smoke","regression"})
 
 	public void verifyCountAPIResponse() {
@@ -40,7 +52,9 @@ public class CountAPITest {
 			
 	}
 	
-	
+	@Story("Proper status code is shown for invalid token ")
+	@Description("Verify if the count api is giving correct status code for invalid token")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(description="Verify if the count api is giving correct status code for invalid token",groups= {"api","negative","smoke","regression"})
 
 	public void countAPITest_MissingAuthToken() {

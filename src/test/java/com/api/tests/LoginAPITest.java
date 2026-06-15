@@ -1,4 +1,4 @@
-package com.api.tests;
+ package com.api.tests;
 
 import static com.api.utils.SpecUtil.requestSpec;
 import static com.api.utils.SpecUtil.responseSpec_OK;
@@ -12,8 +12,18 @@ import org.testng.annotations.Test;
 
 import com.api.request.model.UserCredentials;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
 
+
+
+@Epic("User Management")
+@Feature("Authentication")
 public class LoginAPITest {
 	private UserCredentials userCredentials;
 	
@@ -22,6 +32,9 @@ public class LoginAPITest {
 	 userCredentials = new UserCredentials("iamfd", "password");
 	}
 	
+	@Story("Valid user should be able to login into the system")
+	@Description("Verify if FD user is able to login via api")
+	@Severity(SeverityLevel.BLOCKER)
 	@Test(description="Verify if the login api is working for FD user",groups= {"api","regression","smoke"})
 	public void loginAPITest() {
 		
