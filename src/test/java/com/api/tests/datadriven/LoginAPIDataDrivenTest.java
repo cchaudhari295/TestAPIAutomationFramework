@@ -1,4 +1,4 @@
- package com.api.tests;
+package com.api.tests.datadriven;
 
 import static com.api.utils.SpecUtil.requestSpec;
 import static com.api.utils.SpecUtil.responseSpec_OK;
@@ -11,35 +11,21 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.api.request.model.UserCredentials;
+import com.dataproviders.api.bean.UserBean;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
 import io.restassured.response.Response;
 
+public class LoginAPIDataDrivenTest {
 
-
-@Epic("User Management")
-@Feature("Authentication")
-public class LoginAPITest {
-	private UserCredentials userCredentials;
 	
-	@BeforeMethod(description="Create the payload for login API")
-	public void setUp() {
-	 userCredentials = new UserCredentials("iamfd", "password");
-	}
 	
-	@Story("Valid user should be able to login into the system")
-	@Description("Verify if FD user is able to login via api")
-	@Severity(SeverityLevel.BLOCKER)
-	@Test(description="Verify if the login api is working for FD user",groups= {"api","regression","smoke"})
-	public void loginAPITest() {
+	@Test(description="Verify if the login api is working for FD user",
+			groups= {"api","regression","datadriven"},
+			dataProviderClass=com.dataproviders.DataProviderUtils.class,dataProvider="LoginAPIDataProvider")
+	public void loginAPITest(UserBean userBean) {
 		
 	Response res=	given()
-		 	.spec(requestSpec(userCredentials))		 	
+		 	.spec(requestSpec(userBean))		 	
 		.when()
 		 	.post("login")
 		 .then()
