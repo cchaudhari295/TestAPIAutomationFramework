@@ -11,6 +11,6 @@ public class DateTimeUtil {
 	}
 	
 	public static String getTimeWithDaysAgo(int days) {
-		return Instant.now().minus(days,ChronoUnit.DAYS).toString();
+		return Instant.now().minus(days,ChronoUnit.DAYS).toString(); //Date in UTC ISO Format
 	}
 }
